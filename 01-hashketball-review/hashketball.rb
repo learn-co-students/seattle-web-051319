@@ -118,34 +118,53 @@ def game_hash
 end
 
 
-# def num_points_scored(player_name)
-#   # get a list of all the players
-#   # find the player whose name matches the argument 'player_name'
-#   # return that player's points
-# end
+def num_points_scored(player_name)
+  # get a list of all the players
+  # find the player whose name matches the argument 'player_name'
+  # return that player's points
+  player_search(player_name)[:points]
+end
+
+def player_search(player_name)
+  # game_hash.each do |team, stats|
+  #   if stats[:players][player_name]
+  #     return stats[:players][player_name]
+  #   end
+  # end
+  
+  maybe_jeff_Adrien = get_players.find do |name, stats|
+    name == player_name
+  end
+  binding.pry
+end
 
 
 
 
-# # EXERCISE:
-# # Define a method called get_names that takes an array of instructors
-# # and returns just their names.
-# instructors = [
-#   {name: 'Alex', hometown: 'upstate ny', mood: 'excited'},
-#   {name: 'rachel', hometown: 'maine'},
-#   {name: 'maxwell', hometwon: 'brookyln'}
-# ]
-#
-# def get_names(instructors)
-#
-# end
+# EXERCISE:
+# Define a method called get_names that takes an array of instructors
+# and returns just their names.
+instructors = [
+  {name: 'Alex', hometown: 'upstate ny', mood: 'excited'},
+  {name: 'rachel', hometown: 'maine'},
+  {name: 'maxwell', hometwon: 'brookyln'}
+]
+
+def get_names(instructors)
+  maybe_names = instructors.map do |obj|
+    obj[:name]
+  end
+end #=> ["Alex", "rachel", "maxwell"]
+
+puts get_names(instructors)
 
 
 
 
-# def get_players
-#
-# end
+def get_players
+  game_hash[:home][:players].merge!(game_hash[:away][:players])
+end
+
 
 
 
