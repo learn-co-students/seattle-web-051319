@@ -1,0 +1,2 @@
+class VideoMov < Video
+end
