@@ -1,0 +1,42 @@
+require_relative './config/environment'
+
+desc 'seed the database'
+task :seed do
+  drop_table = "DROP TABLE IF EXISTS checklist;"
+  create_table = <<~SQL
+    CREATE TABLE checklist (
+      id INTEGER PRIMARY KEY,
+      description TEXT
+    );
+  SQL
+
+  inserts = <<~SQL
+    INSERT INTO checklist (description)
+    VALUES ("verify partners credentials");
+
+    INSERT INTO checklist (description)
+    VALUES ("check fuel");
+
+    INSERT INTO checklist (description)
+    VALUES ("raise wheels");
+
+    INSERT INTO checklist (description)
+    VALUES ("take off");
+  SQL
+
+  DB[:conn].execute_batch(drop_table)
+  DB[:conn].execute_batch(create_table)
+  DB[:conn].execute_batch(inserts)
+end
+
+desc 'see checklist'
+task :checklist do
+  Task.all.each do |task|
+    puts task
+  end
+end
+
+desc 'console'
+task :console do
+  binding.pry
+end

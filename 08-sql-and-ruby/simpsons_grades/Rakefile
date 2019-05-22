@@ -1,0 +1,28 @@
+require_relative 'config/environment'
+
+desc 'runs the student program'
+task :run do
+  require_relative './bin/run'
+  main()
+end
+
+desc 'Loads up a console!'
+task :console do
+  Pry.start
+end
+
+desc 'tell a joke'
+task :joke do
+  puts 'why did the cowboy get a weiner dog?'
+end
+
+desc 'hear the punchline'
+task :punchline do
+  puts 'he wanted to get a long little doggy'
+end
+
+desc 'plays a guessing game'
+task :guess do
+  game = GuessingGame.new
+  game.play
+end
