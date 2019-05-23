@@ -1,0 +1,17 @@
+require './config/environment'
+require 'sinatra/activerecord/rake'
+
+desc 'outputs hello to terminal'
+task :hello do
+    puts "hello!"
+end
+
+desc 'Start our app console'
+task :console do
+    binding.pry
+end
+
+desc 'Show database'
+task :show do
+    CityShower.run
+end
