@@ -1,0 +1,17 @@
+require_relative './config/environment'
+
+desc "run the command line application"
+task :run do
+  cli = CLI.new
+  cli.run
+end
+
+desc "run a console with the environment"
+task :console do
+  pry.binding
+end
+
+desc "prints an ASCII grid map of GPS points"
+task :map do
+  Map.run
+end
