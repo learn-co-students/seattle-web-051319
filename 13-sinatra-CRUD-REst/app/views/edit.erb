@@ -1,0 +1,15 @@
+<form action="/books/<%= @book.id %>" method="post">
+  <input type="hidden" name="_method" value="patch">
+  Author
+  <input type="text" name="author" value="<%= @book.author %>">
+  Snippet
+  <textarea name="snippet" value="<%= @book.snippet %>" rows="8" cols="80"></textarea>
+  Title
+  <input type="text" name="title" value="<%= @book.title %>">
+  <input type="submit" value="Submit">
+</form>
+
+<form action="/books/<%= @book.id %>" method="post">
+<input type="hidden" name="_method" value="delete">
+<input type="submit" value="Delete">
+</form>
