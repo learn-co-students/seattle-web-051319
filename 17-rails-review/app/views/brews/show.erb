@@ -1,0 +1,14 @@
+<%= @brew.blend_name %> <br>
+<%= @brew.origin %> <br>
+<%= @brew.notes %> <br>
+<%= @brew.strength %>
+<h2>Customers</h2>
+<% @brew_purchases.each do |purchase| %>
+<%= purchase.customer_name %>
+<% end %>
+
+<%= link_to "Delete", @brew, method: :delete %>
+
+<%= form_tag @brew, method: :delete do %>
+  <%= submit_tag "Delete" %>
+<% end %>
