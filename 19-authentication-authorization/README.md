@@ -7,7 +7,12 @@
 
 ## Authentication && Authorization
 1. What is authentication?
+  - Been allowed to log in
+  - who am i.
 2. What is authorization?
+  - what can I do
+  - pages that users can see.
+  - actions that users can do on the page.
 
 - encryption
   - Changing data that you're storing
@@ -24,9 +29,29 @@
 ## User Stories
 1. As a registered user, I should be able to log in by providing my username.
   - What model(s) do I need?
+    - create a user model.
+    - user model
   - What route(s) do I need?
+    - user login route
+      - session -> login
+        - not associated with a model currently
+        - maybe need a new model TBD
+        - at least a controller.
+      - get : new
+      - post : create
+    - logout
+      - delete : destroy
+    - signup
+      - get : new
+      - post : create
+    - show the username on page.
   - What controller action(s) do I need?
+    - session controller
+    - user controller
   - What view(s) do I need?
+    - new for session - login view
+    - new for user - signup view
+    - logout can be a button (no view needed)
 
 2. I should be able to add a password to my site and validate user. (at the end of lecture if we have time).
   - What model(s) do I need?
@@ -37,11 +62,10 @@
 ## Part 2 - Authorization
 
 1. As an un-authenticated user, I should not be able to see a list of students and information about an individual student.
-
-  - What model(s) do I need?
-  - What route(s) do I need?
-  - What controller action(s) do I need?
-  - What view(s) do I need?
+  - I want to go to the login
+  - before_action
+    - check if they are logged in
+    - somehow utilize session[:user_id]
 
 2. As an authenticated user I should be able see a list of students and information about an individual student plus create a new student.
   - What model(s) do I need?
@@ -66,5 +90,6 @@
 - password hashing is one-way encryption (we never decrypt it)
 
 
+- [EditMyCookie](https://chrome.google.com/webstore/detail/editthiscookie/fngmhnnpilhplaeedifhccceomclgfbg?hl=en)
 - [Digest](https://ruby-doc.org/stdlib-2.2.1/libdoc/digest/rdoc/Digest.html)
 - [BCrypt](https://github.com/codahale/bcrypt-ruby)

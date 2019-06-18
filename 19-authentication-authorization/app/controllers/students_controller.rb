@@ -1,4 +1,5 @@
 class StudentsController < ApplicationController
+  before_action :redirect_user
   def index
       @students = Student.all
   end

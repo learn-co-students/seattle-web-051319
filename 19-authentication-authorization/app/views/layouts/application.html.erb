@@ -15,7 +15,12 @@
       <h1>Student Lister</h1>
     </a>
     <div class="right menu">
+      <% if logged_in? %>
         <%= link_to 'Create a New Student', new_student_path, {class: 'item'} %>
+        <%= link_to 'Logout', logout_path, {class: 'item'} %>
+      <% else %>
+      <%= link_to 'Login', login_path, {class: 'item'} %>
+    <% end %>
    </div>
   </div>
   <body>
