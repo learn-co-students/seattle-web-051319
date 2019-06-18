@@ -23,24 +23,45 @@
 
 ## User Stories
 1. As a registered user, I should be able to log in by providing my username.
+  - What model(s) do I need?
+  - What route(s) do I need?
+  - What controller action(s) do I need?
+  - What view(s) do I need?
 
-2. I should be able to add a password to my site and validate user.
+2. I should be able to add a password to my site and validate user. (at the end of lecture if we have time).
+  - What model(s) do I need?
+  - What route(s) do I need?
+  - What controller action(s) do I need?
+  - What view(s) do I need?
 
 ## Part 2 - Authorization
 
 1. As an un-authenticated user, I should not be able to see a list of students and information about an individual student.
 
+  - What model(s) do I need?
+  - What route(s) do I need?
+  - What controller action(s) do I need?
+  - What view(s) do I need?
+
 2. As an authenticated user I should be able see a list of students and information about an individual student plus create a new student.
+  - What model(s) do I need?
+  - What route(s) do I need?
+  - What controller action(s) do I need?
+  - What view(s) do I need?
 
 3. If an un-authenticated user tries to see the new student form, they should be redirected to the login page.
+  - What model(s) do I need?
+  - What route(s) do I need?
+  - What controller action(s) do I need?
+  - What view(s) do I need?
 
 ## Resources
 ##### Password Authentication Guidelines
 
 - install gem `bcrpy`
 - you don't store passwords as plain text
-  - add a password_digest column
-  - add `has_secure_password` to the model with the password
+  - add a password_digest column.
+  - add `has_secure_password` to the model with the password.
 - at signin use the bcrypt authenticate method to confirm that the password matches
 - password hashing is one-way encryption (we never decrypt it)
 
