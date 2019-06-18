@@ -1,0 +1,46 @@
+
+#redText {
+    color: red;
+    font-family: fantasy;
+}
+
+.btn-warning {
+    color: white;
+}
+
+.def {
+    font-family: fantasy;
+}
+
+h1 {
+    color: teal;
+}
+
+img {
+    /* float: right; */
+    width:  100%;
+    /* margin: 20px;
+    padding: 30px;
+    border: 20px solid white;
+    border-image: linear-gradient(to bottom left, red 0%, white 50%, blue 100%) 5; */
+}
+
+.yeet {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.left {
+    grid-area: 1 / 1 / 2 / 6; 
+}
+
+.right { 
+    grid-area: 2 / 4 / 6 / 6; 
+}
+
+.middle { 
+    grid-area: 2 / 1 / 6 / 4; 
+}
