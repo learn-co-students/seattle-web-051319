@@ -1,0 +1,39 @@
+<link href="style.css" rel="stylesheet">
+
+<h1>Top 100 Movies</h1>
+
+<div id="error">
+  <span id="message"></span>
+  <span id="countdown"></span>
+</div>
+
+<div>
+  <form id="movie-filter">
+    <input id="filter" type="text" placeholder="search"/>
+    <input type="submit">
+  </form>
+</div>
+
+<div>
+  <form id="save-form">
+    <input name="title" type="text" placeholder="title"/>
+    <input name="year" type="number" step="1" min="1900" placeholder="year"/>
+    <input type="submit" value="save">
+  </form>
+</div>
+
+<div>
+  <select id="select-decade">
+    <option value="1940">1940s</option>
+    <option value="1950">1950s</option>
+    <option value="1960">1960s</option>
+    <option value="1970">1970s</option>
+    <option value="1980">1980s</option>
+    <option value="1990">1990s</option>
+  </select>
+</div>
+
+<ul id="movies"></ul>
+
+<script src="movies.js"></script>
+<script src="clicking.js"></script>
