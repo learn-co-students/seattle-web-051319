@@ -1,0 +1,14 @@
+img {
+  min-width: 500px;
+  max-width: 800px;
+  height: 600px;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+}
+li {
+  font-size: 25px;
+  margin: 20px;
+}
