@@ -12,10 +12,12 @@ console.log('the object will create a key/value pair where the key is the variab
 console.log('and the value is the variable value.')
 let city = 'Seattle'
 let state = 'Washington'
-let o2 = {city, state}
-console.log(02)
+
 console.log()
 
 console.log('object destructuring is a great way to console.log values and their names')
 console.log({city})
 console.log({state})
+
+let o2 = {city, state}
+console.log(o2)
