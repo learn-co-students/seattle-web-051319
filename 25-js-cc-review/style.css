@@ -3,11 +3,25 @@ body {
 }
 
 header{
-  font-size: 24px;
-  line-height: 24px;
+  font-size: 36px;
+  line-height: 36px;
   margin: 10px;
+  margin-bottom: 30px;
 }
 
-form {
-  margin: auto;
+.container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+div {
+  display: inline-block;
+  margin: 30px;
+  padding: 10px;
+  border: solid 3px black;
+}
+
+img {
+  height: 300px;
+  width: 250px;
 }

@@ -10,12 +10,16 @@
 <body>
   <header>Movie List</header>
   <form id="new-movie">
-    <label>Title: </label>
-    <input name="title"/>
-    <label>Image Url: </label>
-    <input name="image"/>
-    <button type="submit">Create Movie</button>
+    <fieldset>
+      <legend>Add Movie</legend>
+      <label>Title: </label>
+      <input name="title" type="text"/>
+      <label>Image Url: </label>
+      <input name="image" type="text"/>
+      <button type="submit">Create Movie</button>
+    </fieldset>
   </form>
-  <div id="container"></div>
+  <main id="container"></main>
+  <script src='./main.js'></script>
 </body>
 </html>
