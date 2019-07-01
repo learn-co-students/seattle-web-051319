@@ -30,6 +30,17 @@ const displayMovie = (movie) => {
   likeButton.textContent = "Like Movie";
   deleteButton.textContent = "Remove Movie";
 
+  likeButton.addEventListener('click', () => {
+    movie.likes++;
+    likeMovie(movie.id, movie.likes);
+    likes.textContent = `Likes: ${movie.likes}`;
+  })
+
+  deleteButton.addEventListener('click', () => {
+    removeMovie(movie.id);
+    container.removeChild(divEl);
+  })
+
   divEl.appendChild(titleEl);
   divEl.appendChild(image);
   divEl.appendChild(likes);
@@ -40,7 +51,6 @@ const displayMovie = (movie) => {
 }
 
 const addNewMovie = () => {
-  console.log(form)
   fetch(url, {
     method: 'POST',
     headers: {
@@ -54,7 +64,32 @@ const addNewMovie = () => {
     })
   })
   .then(res => res.json())
-  .then(json => console.log(json))
+  .then(json => displayMovie(json))
+}
+
+const likeMovie = (id, newLikeCount) => {
+  fetch(`${url}/${id}`, {
+    method: 'PATCH',
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    },
+    body: JSON.stringify({
+      'likes': newLikeCount
+    })
+  })
+  .then(res => res.json())
+}
+
+const removeMovie = (id) => {
+  fetch(`${url}/${id}`, {
+    method: 'DELETE',
+    headers: {
+      "Content-Type": "application/json",
+      Accept: "application/json"
+    }
+  })
+  .then(res => res.json())
 }
 
 form.addEventListener('submit', () => {
