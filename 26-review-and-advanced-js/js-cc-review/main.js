@@ -1,23 +1,28 @@
 'use strict';
 
-const form = document.getElementById('new-movie');
+const url = 'http://localhost:3000/movies';
+const newMovieForm = document.getElementById('new-movie');
 const container = document.getElementById('container');
-const url = 'http://localhost:3000/movies'
 
-const fetchMovies = () => {
+newMovieForm.addEventListener('submit', () => {
+  event.preventDefault();
+  addMovie();
+})
+
+function fetchMovies() {
   fetch(url)
   .then(res => res.json())
-  .then(json => displayAllMovies(json))
+  .then(json => displayMovies(json))
 }
 
-const displayAllMovies = (allMovies) => {
-  for (let movie of allMovies) {
-    displayMovie(movie);
+function displayMovies(movies) {
+  for (let movie of movies) {
+    displaySingleMovie(movie);
   }
 }
 
-const displayMovie = (movie) => {
-  const divEl = document.createElement('div');
+function displaySingleMovie(movie) {
+  const card = document.createElement('div');
   const titleEl = document.createElement('h4');
   const image = document.createElement('img');
   const likes = document.createElement('p');
@@ -27,75 +32,69 @@ const displayMovie = (movie) => {
   titleEl.textContent = movie.title;
   image.src = movie.image;
   likes.textContent = `Likes: ${movie.likes}`;
-  likeButton.textContent = "Like Movie";
-  deleteButton.textContent = "Remove Movie";
+  likeButton.textContent = 'Like';
+  deleteButton.textContent = 'Remove'
 
   likeButton.addEventListener('click', () => {
-    movie.likes++;
-    likeMovie(movie.id, movie.likes);
-    likes.textContent = `Likes: ${movie.likes}`;
+    movie.likes += 1;
+    likeMovie(movie, likes);
+    // likes.textContent = `Likes: ${movie.likes}`;
   })
 
   deleteButton.addEventListener('click', () => {
-    removeMovie(movie.id);
-    container.removeChild(divEl);
+    deleteMovie(movie);
+    container.removeChild(card);
   })
 
-  divEl.appendChild(titleEl);
-  divEl.appendChild(image);
-  divEl.appendChild(likes);
-  divEl.appendChild(likeButton);
-  divEl.appendChild(deleteButton);
-
-  container.appendChild(divEl);
+  card.appendChild(titleEl);
+  card.appendChild(image);
+  card.appendChild(likes);
+  card.appendChild(likeButton);
+  card.appendChild(deleteButton);
+  container.appendChild(card);
 }
 
-const addNewMovie = () => {
+function addMovie() {
   fetch(url, {
     method: 'POST',
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
+      'Content-Type': 'application/json',
+      'Accepts': 'application/json'
     },
     body: JSON.stringify({
-      'title': form.title.value,
-      'image': form.image.value,
-      'likes': 0
+      title: newMovieForm.title.value,
+      image: newMovieForm.image.value,
+      likes: 0
     })
   })
   .then(res => res.json())
-  .then(json => displayMovie(json))
+  .then(json => displaySingleMovie(json))
 }
 
-const likeMovie = (id, newLikeCount) => {
-  fetch(`${url}/${id}`, {
+function likeMovie(movieObj, likeDisplay) {
+  fetch(`${url}/${movieObj.id}`, {
     method: 'PATCH',
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
+      'Content-Type': 'application/json',
+      'Accepts': 'application/json'
     },
     body: JSON.stringify({
-      'likes': newLikeCount
+      likes: movieObj.likes
     })
   })
   .then(res => res.json())
+  .then(json => likeDisplay.textContent = `Likes: ${json.likes}`)
 }
 
-const removeMovie = (id) => {
-  fetch(`${url}/${id}`, {
+function deleteMovie(movieObj) {
+  fetch(`${url}/${movieObj.id}`, {
     method: 'DELETE',
     headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json"
+      'Content-Type': 'application/json',
+      'Accepts': 'application/json'
     }
   })
   .then(res => res.json())
 }
-
-form.addEventListener('submit', () => {
-  event.preventDefault();
-  console.log('fired!')
-  addNewMovie();
-})
 
 fetchMovies();
