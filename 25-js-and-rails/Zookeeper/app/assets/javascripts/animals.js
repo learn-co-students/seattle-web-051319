@@ -6,6 +6,7 @@ document.addEventListener("DOMContentLoaded", main);
 function main() {
 	const table = document.getElementById('animal_table');
 
+
 	fetch("http://localhost:3000/api/animals", {
 		method: "GET",
 		headers: {
@@ -31,37 +32,40 @@ function main() {
 			// 	addAnimal(json[i]);
 			// }
 
-			for (i in json) {
-				addAnimal(json[i])
+			for (obj of json) {
+				// addAnimal(json[i])
+				let animal = new Animal( obj )
+
+				animal.addToTable();
 			}
 		})
 
-	function addAnimal(animal) {
-		let trEl = document.createElement('tr');
+	// function addAnimal(animal) {
+	// 	let trEl = document.createElement('tr');
 
-		let idEl = document.createElement('td');
-		idEl.textContent = animal.id;
+	// 	let idEl = document.createElement('td');
+	// 	idEl.textContent = animal.id;
 		
-		let nameEl = document.createElement('td');
-		nameEl.textContent = animal.name;
+	// 	let nameEl = document.createElement('td');
+	// 	nameEl.textContent = animal.name;
 
-		let ageEl = document.createElement('td');
-		ageEl.textContent = animal.age;
+	// 	let ageEl = document.createElement('td');
+	// 	ageEl.textContent = animal.age;
 
-		let speciesEl = document.createElement('td');
-		speciesEl.textContent = animal.species.name;
+	// 	let speciesEl = document.createElement('td');
+	// 	speciesEl.textContent = animal.species.name;
 
-		let profileEl = document.createElement('td');
-		let profileLink = document.createElement('a');
-		profileLink.textContent = "Show me";
-		profileLink.href = `/animals/${animal.id}`;
-		profileEl.appendChild(profileLink);
+	// 	let profileEl = document.createElement('td');
+	// 	let profileLink = document.createElement('a');
+	// 	profileLink.textContent = "Show me";
+	// 	profileLink.href = `/animals/${animal.id}`;
+	// 	profileEl.appendChild(profileLink);
 
-		trEl.appendChild(idEl);
-		trEl.appendChild(nameEl);
-		trEl.appendChild(ageEl);
-		trEl.appendChild(speciesEl);
-		trEl.appendChild(profileEl);
-		table.appendChild(trEl);
-	};
+	// 	trEl.appendChild(idEl);
+	// 	trEl.appendChild(nameEl);
+	// 	trEl.appendChild(ageEl);
+	// 	trEl.appendChild(speciesEl);
+	// 	trEl.appendChild(profileEl);
+	// 	table.appendChild(trEl);
+	// };
 }

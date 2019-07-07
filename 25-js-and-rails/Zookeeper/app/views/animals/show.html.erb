@@ -1,2 +1,5 @@
-<h1><%= @animal.name %></h1>
-<p><%= @animal.name %> is a <%= @animal.age %> year old <%= @animal.species.name %>. They are very nice.</p>
+<h1 id='animal_name'></h1>
+
+<p id='animal_description'></p>
+
+<%= javascript_include_tag 'animal' %>

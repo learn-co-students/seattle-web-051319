@@ -9,6 +9,10 @@ class AnimalsController < ApplicationController
 
 	def show
 		@animal = Animal.find(params[:id])
+		respond_to do |f|
+			f.html { render :show }
+			f.json { render :json => @animal, :include => :species }
+		end
   end
 
 	def new
