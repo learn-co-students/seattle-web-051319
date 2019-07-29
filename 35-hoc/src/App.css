@@ -1,0 +1,29 @@
+.App {
+  color: #ccff00;
+  text-align: center;
+  background-color: rgb(31, 40, 122);
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+#pizza {
+  height: 200px;
+}
+
+.header {
+  grid-area: 1 / 1 / 2 / 5;
+}
+.left-list {
+  grid-area: 2 / 1 / 5 / 3;
+}
+.right-list {
+  grid-area: 2 / 3 / 5 / 5;
+}
+
+img#logo {
+  height:90px;
+}
